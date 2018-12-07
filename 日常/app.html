@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+    <link href=https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css rel=stylesheet>
+    <title>商品详情测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        
+        tr.className = '';
+        if(level==0 && (id.substr(0,2)=='pt'||id.substr(0,2)=='ft')){
+          tr.className = 'hiddenRow';
+        }
+
+        if(level==1 && id.substr(0,2)=='pt'){
+          tr.className = 'hiddenRow';
+        }
+        if(level==2 && id.substr(0,2) == 'ft'){
+          tr.className = 'hiddenRow';
+        }
+        
+    
+        
+    }
+
+   
+}
+
+
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+function toggleBox(tid){
+    console.log(document.getElementById('div_'+tid));
+    
+    if(document.getElementById('div_'+tid).style.display=="none"){
+        document.getElementById('div_'+tid).style.display="block"
+    }else{
+        document.getElementById('div_'+tid).style.display="none"
+    }
+}
+
+function hideAll(){
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+    //console.log(trs[i])
+     id = trs[i].id;
+     if (id.substr(0,2) == 'pt'||id.substr(0,2) == 'ft' ) {
+        if(trs[i].style.display=="none"){
+         trs[i].style.display="table-row"
+        }else{
+         trs[i].style.display="none"
+        }
+     }
+    }
+    if( document.getElementById('c1').innerText=="详细"){
+        document.getElementById('c1').innerHTML="收起"
+    }else{
+        document.getElementById('c1').innerHTML="详细"
+    }
+    
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>商品详情测试报告</h1>
+<p class='attribute'><strong>测试人员:</strong> 小仙女</p>
+<p class='attribute'><strong>开始时间:</strong> 2018-11-20 20:09:20</p>
+<p class='attribute'><strong>合计耗时:</strong> 0:00:00.477028</p>
+<p class='attribute'><strong>测试结果:</strong> 共 5 条用例，通过 1 条，，失败 4 条，通过率= 20.00%</p>
+
+<p class='description'>测试结果如下</p>
+</div>
+
+
+
+    <p id='show_detail_line'>
+    <a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 20.00% }</a>
+    <a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 4 }</a>
+    <a class="btn btn-success" href='javascript:showCase(2)'>通过{ 1 }</a>
+    <a class="btn btn-info" href='javascript:showCase(3)'>所有{ 5 }</a>
+    </p>
+    <table id='result_table' class="table table-condensed table-bordered table-hover">
+    <colgroup>
+    <col align='left' />
+    <col align='right' />
+    <col align='right' />
+    <col align='right' />
+    <col align='right' />
+    <col align='right' />
+    </colgroup>
+    <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+        <td>用例集</td>
+        <td>总计</td>
+        <td>通过</td>
+        <td>失败</td>
+        <td>错误</td>
+        <td>详细</td>
+    </tr>
+    
+<tr class='failClass warning'>
+    <td class="text-center"></td>
+    <td class="text-center">5</td>
+    <td class="text-center">1</td>
+    <td class="text-center">4</td>
+    <td class="text-center">0</td>
+    <td class="text-center"></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1</div></td>
+    <td colspan='5' align='center'>
+
+     <!--Ĭ�����������Ϣ -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse"  onclick="toggleBox('pt1_1')" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+    
+    <!-- Ĭ��չ��������Ϣ -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse"  onclick="toggleBox('pt1_1')" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in">
+    <pre>
+    
+pt1_1: [[1.0], [106.0], ['北京'], [''], ['%^'], ['anh']]
+{"msg":"","seller":{"description":"我是商家17","icon":"http:\/\/120.27.23.105\/images\/icon.png","name":"商家17","productNums":999,"score":5.0,"sellerid":17},"code":"0","data":{"bargainPrice":111.99,"createtime":"2017-10-14T21:39:05","detailUrl":"https:\/\/item.m.jd.com\/product\/4719303.html?utm_source=androidapp&amp;utm_medium=appshare&amp;utm_campaign=t_335139774&amp;utm_term=QQfriends","images":"https:\/\/m.360buyimg.com\/n0\/jfs\/t9004\/210\/1160833155\/647627\/ad6be059\/59b4f4e1N9a2b1532.jpg!q70.jpg|https:\/\/m.360buyimg.com\/n0\/jfs\/t7504\/338\/63721388\/491286\/f5957f53\/598e95f1N7f2adb87.jpg!q70.jpg|https:\/\/m.360buyimg.com\/n0\/jfs\/t7441\/10\/64242474\/419246\/adb30a7d\/598e95fbNd989ba0a.jpg!q70.jpg","itemtype":1,"pid":1,"price":118.0,"pscid":1,"salenum":0,"sellerid":17,"subhead":"每个中秋都不能简单，无论身在何处，你总需要一块饼让生活更圆满，京东月饼让爱更圆满京东自营，闪电配送，更多惊喜，快用手指戳一下","title":"北京稻香村 稻香村中秋节月饼 老北京月饼礼盒655g"}}
+&lt;class 'str'&gt;
+
+
+    </pre>
+    </div>
+
+    </td>
+</tr>
+
+<tr id='ft1_2' class='none'>
+    <td class='failCase'><div class='testcase'>test_2</div></td>
+    <td colspan='5' align='center'>
+
+     <!--Ĭ�����������Ϣ -Findyou
+    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse"  onclick="toggleBox('ft1_2')" data-target='#div_ft1_2'>失败</button>
+    <div id='div_ft1_2' class="collapse">  -->
+    
+    <!-- Ĭ��չ��������Ϣ -Findyou -->
+    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse"  onclick="toggleBox('ft1_2')" data-target='#div_ft1_2'>失败</button>
+    <div id='div_ft1_2' class="collapse in">
+    <pre>
+    
+ft1_2: Traceback (most recent call last):
+  File "C:/Users/meng/Desktop/python/日常/test1.py", line 49, in test_2
+    self.assertIn('detailUrl', tou)
+AssertionError: 'detailUrl' not found in '{}'
+[[1.0], [106.0], ['北京'], [''], ['%^'], ['anh']]
+{}
+&lt;class 'str'&gt;
+
+
+    </pre>
+    </div>
+
+    </td>
+</tr>
+
+<tr id='ft1_3' class='none'>
+    <td class='failCase'><div class='testcase'>test_3</div></td>
+    <td colspan='5' align='center'>
+
+     <!--Ĭ�����������Ϣ -Findyou
+    <button id='btn_ft1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse"  onclick="toggleBox('ft1_3')" data-target='#div_ft1_3'>失败</button>
+    <div id='div_ft1_3' class="collapse">  -->
+    
+    <!-- Ĭ��չ��������Ϣ -Findyou -->
+    <button id='btn_ft1_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse"  onclick="toggleBox('ft1_3')" data-target='#div_ft1_3'>失败</button>
+    <div id='div_ft1_3' class="collapse in">
+    <pre>
+    
+ft1_3: Traceback (most recent call last):
+  File "C:/Users/meng/Desktop/python/日常/test1.py", line 57, in test_3
+    self.assertIn('detailUrl', tou)
+AssertionError: 'detailUrl' not found in '&lt;html&gt;\n&lt;head&gt;\n    &lt;title&gt;Struts Problem Report&lt;/title&gt;\n    &lt;style&gt;\n    \tpre {\n\t    \tmargin: 0;\n\t        padding: 0;\n\t    }    \n    &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;h2&gt;Struts Problem Report&lt;/h2&gt;\n    &lt;p&gt;\n    Struts has detected an unhandled exception:\n    &lt;/p&gt;\n\n\n&lt;div id="exception-info"&gt;\n&lt;table&gt;\n    &lt;tr&gt;\n        &lt;td&gt;&lt;strong&gt;Messages&lt;/strong&gt;:&lt;/td&gt;\n        &lt;td&gt;\n                    &lt;li&gt;For input string: &amp;quot;??&amp;quot;&lt;/li&gt;\n        &lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n        &lt;td&gt;&lt;strong&gt;File&lt;/strong&gt;:&lt;/td&gt;\n        &lt;td&gt;java/lang/NumberFormatException.java&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n        &lt;td&gt;&lt;strong&gt;Line number&lt;/strong&gt;:&lt;/td&gt;\n        &lt;td&gt;65&lt;/td&gt;\n    &lt;/tr&gt;\n    \n&lt;/table&gt;\n&lt;/div&gt;\n\n\n&lt;div id="stacktraces"&gt;\n&lt;hr /&gt;\n&lt;h3&gt;Stacktraces&lt;/h3&gt;\n&lt;div class="stacktrace" style="padding-left: 0em"&gt;\n    &lt;strong&gt;java.lang.NumberFormatException: For input string: &amp;quot;??&amp;quot;&lt;/strong&gt;\n    &lt;div&gt;\n    &lt;pre&gt;\n    java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n    java.lang.Long.parseLong(Long.java:589)\n    java.lang.Long.parseLong(Long.java:631)\n    action.ProductAction.getProductDetail(ProductAction.java:295)\n    sun.reflect.GeneratedMethodAccessor265.invoke(Unknown Source)\n    sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n    java.lang.reflect.Method.invoke(Method.java:498)\n    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)\n    ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)\n    ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)\n    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)\n    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethod(XWorkMethodAccessor.java:108)\n    ognl.OgnlRuntime.callMethod(OgnlRuntime.java:1369)\n    ognl.ASTMethod.getValueBody(ASTMethod.java:90)\n    ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)\n    ognl.SimpleNode.getValue(SimpleNode.java:258)\n    ognl.Ognl.getValue(Ognl.java:494)\n    ognl.Ognl.getValue(Ognl.java:458)\n    com.opensymphony.xwork2.ognl.OgnlUtil$2.execute(OgnlUtil.java:309)\n    com.opensymphony.xwork2.ognl.OgnlUtil.compileAndExecute(OgnlUtil.java:340)\n    com.opensymphony.xwork2.ognl.OgnlUtil.getValue(OgnlUtil.java:307)\n    com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:423)\n    com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:287)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:250)\n    org.apache.struts2.interceptor.DeprecationInterceptor.intercept(DeprecationInterceptor.java:41)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:167)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265)\n    org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:76)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.DateTextFieldInterceptor.intercept(DateTextFieldInterceptor.java:125)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:253)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    utils.RequestInterceptor.intercept(RequestInterceptor.java:85)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)\n    org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)\n    org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:81)\n    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:99)\n    org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n    org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n    org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)\n    org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n    org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n    org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n    org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)\n    org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)\n    org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n    org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n    org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)\n    org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n    org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)\n    org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1457)\n    org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n    java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n    java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n    org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\n    java.lang.Thread.run(Thread.java:748)\n    &lt;/pre&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;div class="footer"&gt;\n&lt;hr /&gt;\n&lt;p&gt;\nYou are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra\ndebugging behaviors and reports to assist developers.  To disable this mode, set:\n&lt;pre&gt;\n  struts.devMode=false\n&lt;/pre&gt;\nin your &lt;code&gt;WEB-INF/classes/struts.properties&lt;/code&gt; file.\n&lt;/p&gt;\n&lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n'
+[[1.0], [106.0], ['北京'], [''], ['%^'], ['anh']]
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Struts Problem Report&lt;/title&gt;
+    &lt;style&gt;
+    	pre {
+	    	margin: 0;
+	        padding: 0;
+	    }    
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Struts Problem Report&lt;/h2&gt;
+    &lt;p&gt;
+    Struts has detected an unhandled exception:
+    &lt;/p&gt;
+
+
+&lt;div id="exception-info"&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;Messages&lt;/strong&gt;:&lt;/td&gt;
+        &lt;td&gt;
+                    &lt;li&gt;For input string: &amp;quot;??&amp;quot;&lt;/li&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;File&lt;/strong&gt;:&lt;/td&gt;
+        &lt;td&gt;java/lang/NumberFormatException.java&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;Line number&lt;/strong&gt;:&lt;/td&gt;
+        &lt;td&gt;65&lt;/td&gt;
+    &lt;/tr&gt;
+    
+&lt;/table&gt;
+&lt;/div&gt;
+
+
+&lt;div id="stacktraces"&gt;
+&lt;hr /&gt;
+&lt;h3&gt;Stacktraces&lt;/h3&gt;
+&lt;div class="stacktrace" style="padding-left: 0em"&gt;
+    &lt;strong&gt;java.lang.NumberFormatException: For input string: &amp;quot;??&amp;quot;&lt;/strong&gt;
+    &lt;div&gt;
+    &lt;pre&gt;
+    java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+    java.lang.Long.parseLong(Long.java:589)
+    java.lang.Long.parseLong(Long.java:631)
+    action.ProductAction.getProductDetail(ProductAction.java:295)
+    sun.reflect.GeneratedMethodAccessor265.invoke(Unknown Source)
+    sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    java.lang.reflect.Method.invoke(Method.java:498)
+    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)
+    ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)
+    ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethod(XWorkMethodAccessor.java:108)
+    ognl.OgnlRuntime.callMethod(OgnlRuntime.java:1369)
+    ognl.ASTMethod.getValueBody(ASTMethod.java:90)
+    ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)
+    ognl.SimpleNode.getValue(SimpleNode.java:258)
+    ognl.Ognl.getValue(Ognl.java:494)
+    ognl.Ognl.getValue(Ognl.java:458)
+    com.opensymphony.xwork2.ognl.OgnlUtil$2.execute(OgnlUtil.java:309)
+    com.opensymphony.xwork2.ognl.OgnlUtil.compileAndExecute(OgnlUtil.java:340)
+    com.opensymphony.xwork2.ognl.OgnlUtil.getValue(OgnlUtil.java:307)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:423)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:287)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:250)
+    org.apache.struts2.interceptor.DeprecationInterceptor.intercept(DeprecationInterceptor.java:41)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:167)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265)
+    org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:76)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.DateTextFieldInterceptor.intercept(DateTextFieldInterceptor.java:125)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:253)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    utils.RequestInterceptor.intercept(RequestInterceptor.java:85)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)
+    org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+    org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:99)
+    org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+    org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+    org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+    org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+    org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+    org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+    org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+    org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+    org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+    org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+    org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1457)
+    org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    java.lang.Thread.run(Thread.java:748)
+    &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="footer"&gt;
+&lt;hr /&gt;
+&lt;p&gt;
+You are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra
+debugging behaviors and reports to assist developers.  To disable this mode, set:
+&lt;pre&gt;
+  struts.devMode=false
+&lt;/pre&gt;
+in your &lt;code&gt;WEB-INF/classes/struts.properties&lt;/code&gt; file.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;class 'str'&gt;
+
+
+    </pre>
+    </div>
+
+    </td>
+</tr>
+
+<tr id='ft1_4' class='none'>
+    <td class='failCase'><div class='testcase'>test_4</div></td>
+    <td colspan='5' align='center'>
+
+     <!--Ĭ�����������Ϣ -Findyou
+    <button id='btn_ft1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse"  onclick="toggleBox('ft1_4')" data-target='#div_ft1_4'>失败</button>
+    <div id='div_ft1_4' class="collapse">  -->
+    
+    <!-- Ĭ��չ��������Ϣ -Findyou -->
+    <button id='btn_ft1_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse"  onclick="toggleBox('ft1_4')" data-target='#div_ft1_4'>失败</button>
+    <div id='div_ft1_4' class="collapse in">
+    <pre>
+    
+ft1_4: Traceback (most recent call last):
+  File "C:/Users/meng/Desktop/python/日常/test1.py", line 64, in test_4
+    self.assertIn('detailUrl', tou)
+AssertionError: 'detailUrl' not found in '{"msg":"天呢！商品id不能为空","code":"1"}'
+[[1.0], [106.0], ['北京'], [''], ['%^'], ['anh']]
+{"msg":"天呢！商品id不能为空","code":"1"}
+&lt;class 'str'&gt;
+
+
+    </pre>
+    </div>
+
+    </td>
+</tr>
+
+<tr id='ft1_5' class='none'>
+    <td class='failCase'><div class='testcase'>test_5</div></td>
+    <td colspan='5' align='center'>
+
+     <!--Ĭ�����������Ϣ -Findyou
+    <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse"  onclick="toggleBox('ft1_5')" data-target='#div_ft1_5'>失败</button>
+    <div id='div_ft1_5' class="collapse">  -->
+    
+    <!-- Ĭ��չ��������Ϣ -Findyou -->
+    <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse"  onclick="toggleBox('ft1_5')" data-target='#div_ft1_5'>失败</button>
+    <div id='div_ft1_5' class="collapse in">
+    <pre>
+    
+ft1_5: Traceback (most recent call last):
+  File "C:/Users/meng/Desktop/python/日常/test1.py", line 71, in test_5
+    self.assertIn('detailUrl', tou)
+AssertionError: 'detailUrl' not found in '&lt;html&gt;\n&lt;head&gt;\n    &lt;title&gt;Struts Problem Report&lt;/title&gt;\n    &lt;style&gt;\n    \tpre {\n\t    \tmargin: 0;\n\t        padding: 0;\n\t    }    \n    &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;h2&gt;Struts Problem Report&lt;/h2&gt;\n    &lt;p&gt;\n    Struts has detected an unhandled exception:\n    &lt;/p&gt;\n\n\n&lt;div id="exception-info"&gt;\n&lt;table&gt;\n    &lt;tr&gt;\n        &lt;td&gt;&lt;strong&gt;Messages&lt;/strong&gt;:&lt;/td&gt;\n        &lt;td&gt;\n                    &lt;li&gt;For input string: &amp;quot;%^&amp;quot;&lt;/li&gt;\n        &lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n        &lt;td&gt;&lt;strong&gt;File&lt;/strong&gt;:&lt;/td&gt;\n        &lt;td&gt;java/lang/NumberFormatException.java&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n        &lt;td&gt;&lt;strong&gt;Line number&lt;/strong&gt;:&lt;/td&gt;\n        &lt;td&gt;65&lt;/td&gt;\n    &lt;/tr&gt;\n    \n&lt;/table&gt;\n&lt;/div&gt;\n\n\n&lt;div id="stacktraces"&gt;\n&lt;hr /&gt;\n&lt;h3&gt;Stacktraces&lt;/h3&gt;\n&lt;div class="stacktrace" style="padding-left: 0em"&gt;\n    &lt;strong&gt;java.lang.NumberFormatException: For input string: &amp;quot;%^&amp;quot;&lt;/strong&gt;\n    &lt;div&gt;\n    &lt;pre&gt;\n    java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n    java.lang.Long.parseLong(Long.java:578)\n    java.lang.Long.parseLong(Long.java:631)\n    action.ProductAction.getProductDetail(ProductAction.java:295)\n    sun.reflect.GeneratedMethodAccessor265.invoke(Unknown Source)\n    sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n    java.lang.reflect.Method.invoke(Method.java:498)\n    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)\n    ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)\n    ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)\n    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)\n    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethod(XWorkMethodAccessor.java:108)\n    ognl.OgnlRuntime.callMethod(OgnlRuntime.java:1369)\n    ognl.ASTMethod.getValueBody(ASTMethod.java:90)\n    ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)\n    ognl.SimpleNode.getValue(SimpleNode.java:258)\n    ognl.Ognl.getValue(Ognl.java:494)\n    ognl.Ognl.getValue(Ognl.java:458)\n    com.opensymphony.xwork2.ognl.OgnlUtil$2.execute(OgnlUtil.java:309)\n    com.opensymphony.xwork2.ognl.OgnlUtil.compileAndExecute(OgnlUtil.java:340)\n    com.opensymphony.xwork2.ognl.OgnlUtil.getValue(OgnlUtil.java:307)\n    com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:423)\n    com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:287)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:250)\n    org.apache.struts2.interceptor.DeprecationInterceptor.intercept(DeprecationInterceptor.java:41)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:167)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265)\n    org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:76)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.DateTextFieldInterceptor.intercept(DateTextFieldInterceptor.java:125)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:253)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)\n    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    utils.RequestInterceptor.intercept(RequestInterceptor.java:85)\n    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)\n    org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)\n    org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)\n    org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:81)\n    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:99)\n    org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n    org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n    org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)\n    org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n    org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n    org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n    org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)\n    org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)\n    org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n    org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n    org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)\n    org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n    org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)\n    org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1457)\n    org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n    java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n    java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n    org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\n    java.lang.Thread.run(Thread.java:748)\n    &lt;/pre&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;div class="footer"&gt;\n&lt;hr /&gt;\n&lt;p&gt;\nYou are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra\ndebugging behaviors and reports to assist developers.  To disable this mode, set:\n&lt;pre&gt;\n  struts.devMode=false\n&lt;/pre&gt;\nin your &lt;code&gt;WEB-INF/classes/struts.properties&lt;/code&gt; file.\n&lt;/p&gt;\n&lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n'
+[[1.0], [106.0], ['北京'], [''], ['%^'], ['anh']]
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Struts Problem Report&lt;/title&gt;
+    &lt;style&gt;
+    	pre {
+	    	margin: 0;
+	        padding: 0;
+	    }    
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Struts Problem Report&lt;/h2&gt;
+    &lt;p&gt;
+    Struts has detected an unhandled exception:
+    &lt;/p&gt;
+
+
+&lt;div id="exception-info"&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;Messages&lt;/strong&gt;:&lt;/td&gt;
+        &lt;td&gt;
+                    &lt;li&gt;For input string: &amp;quot;%^&amp;quot;&lt;/li&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;File&lt;/strong&gt;:&lt;/td&gt;
+        &lt;td&gt;java/lang/NumberFormatException.java&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;Line number&lt;/strong&gt;:&lt;/td&gt;
+        &lt;td&gt;65&lt;/td&gt;
+    &lt;/tr&gt;
+    
+&lt;/table&gt;
+&lt;/div&gt;
+
+
+&lt;div id="stacktraces"&gt;
+&lt;hr /&gt;
+&lt;h3&gt;Stacktraces&lt;/h3&gt;
+&lt;div class="stacktrace" style="padding-left: 0em"&gt;
+    &lt;strong&gt;java.lang.NumberFormatException: For input string: &amp;quot;%^&amp;quot;&lt;/strong&gt;
+    &lt;div&gt;
+    &lt;pre&gt;
+    java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+    java.lang.Long.parseLong(Long.java:578)
+    java.lang.Long.parseLong(Long.java:631)
+    action.ProductAction.getProductDetail(ProductAction.java:295)
+    sun.reflect.GeneratedMethodAccessor265.invoke(Unknown Source)
+    sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    java.lang.reflect.Method.invoke(Method.java:498)
+    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)
+    ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)
+    ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethod(XWorkMethodAccessor.java:108)
+    ognl.OgnlRuntime.callMethod(OgnlRuntime.java:1369)
+    ognl.ASTMethod.getValueBody(ASTMethod.java:90)
+    ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)
+    ognl.SimpleNode.getValue(SimpleNode.java:258)
+    ognl.Ognl.getValue(Ognl.java:494)
+    ognl.Ognl.getValue(Ognl.java:458)
+    com.opensymphony.xwork2.ognl.OgnlUtil$2.execute(OgnlUtil.java:309)
+    com.opensymphony.xwork2.ognl.OgnlUtil.compileAndExecute(OgnlUtil.java:340)
+    com.opensymphony.xwork2.ognl.OgnlUtil.getValue(OgnlUtil.java:307)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:423)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:287)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:250)
+    org.apache.struts2.interceptor.DeprecationInterceptor.intercept(DeprecationInterceptor.java:41)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:167)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265)
+    org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:76)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.DateTextFieldInterceptor.intercept(DateTextFieldInterceptor.java:125)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:253)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    utils.RequestInterceptor.intercept(RequestInterceptor.java:85)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)
+    org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+    org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:99)
+    org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+    org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+    org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+    org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+    org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+    org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+    org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+    org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+    org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+    org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+    org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1457)
+    org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    java.lang.Thread.run(Thread.java:748)
+    &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="footer"&gt;
+&lt;hr /&gt;
+&lt;p&gt;
+You are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra
+debugging behaviors and reports to assist developers.  To disable this mode, set:
+&lt;pre&gt;
+  struts.devMode=false
+&lt;/pre&gt;
+in your &lt;code&gt;WEB-INF/classes/struts.properties&lt;/code&gt; file.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;class 'str'&gt;
+
+
+    </pre>
+    </div>
+
+    </td>
+</tr>
+
+    <tr id='total_row' class="text-center active">
+        <td>总计</td>
+        <td>5</td>
+        <td>1</td>
+        <td>4</td>
+        <td>0</td>
+        <td>通过率20.00%</td>
+    </tr>
+    </table>
+
+<div id='ending'>&nbsp;</div>
+        <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+        <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+        </span></a></div>
+        
+
+</body>
+</html>
